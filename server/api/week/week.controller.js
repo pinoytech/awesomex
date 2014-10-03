@@ -34,8 +34,8 @@ exports.current_week = function (req, res, next) {
     .findOne({token: req.headers.token}, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
-      if (!req.body.date) return res.send(422, "Please provide the current date");
-      var weekNumber = getWeekNumber(user, req.body.date);
+      if (!req.query.date) return res.send(422, "Please provide the current date");
+      var weekNumber = getWeekNumber(user, req.query.date);
       Week
         .findOne({name: weekNumber})
         .populate("tasks")
