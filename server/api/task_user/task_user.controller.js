@@ -10,5 +10,9 @@ exports.update = function (req, res, next) {
     .findById(req.params.user_id, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
+      TaskUser
+        .findOneOrCreate({_user: user.id, _task: req.params.task_id}, function(err, taskuser) {
+          if (err) return next(err);
+        });
   });
 };

@@ -48,6 +48,7 @@
     "jit-grunt": "^0.5.0",
     "jshint-stylish": "~0.1.5",
     "mongo-relation": "^0.5.4",
+    "mongoose-find-one-or-create": "^0.2.0",
     "mongoose-relationship": "0.0.6",
     "open": "~0.0.4",
     "requirejs": "~2.1.11",

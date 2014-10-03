@@ -16,7 +16,5 @@ module.exports = {
   // MongoDB connection options
   mongo: {
     uri:    "mongodb://normz:ShadoW12@linus.mongohq.com:10007/app30322400"
-  },
-
-  seedDB: true
+  }
 };

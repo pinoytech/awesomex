@@ -9,5 +9,6 @@ var router = express.Router();
 
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.isHeaderAuth(), controller.create);
+router.put('/', auth.isHeaderAuth(), controller.update);
 
 module.exports = router;
