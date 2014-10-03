@@ -14,7 +14,7 @@ var validationError = function(res, err) {
   var newUser = new User(req.body);
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
-    res.json({ token: user.token });
+    res.json({ id: user._id });
   });
 };
 
