@@ -15,9 +15,8 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri:    process.env.MONGOLAB_URI ||
-            process.env.MONGOHQ_URL ||
-            process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://localhost/awesomex'
-  }
+    uri:    "mongodb://normz:ShadoW12@linus.mongohq.com:10007/app30322400"
+  },
+
+  seedDB: true
 };
