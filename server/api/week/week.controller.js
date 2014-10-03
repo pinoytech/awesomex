@@ -30,7 +30,7 @@ exports.index = function (req, res, next) {
 
 exports.current_week = function (req, res, next) {
   User
-    .findOne(req.params.user_id, function (err, user) {
+    .findById(req.params.user_id, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
       var weekNumber = getWeekNumber(user.start_date);
