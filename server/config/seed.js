@@ -3,6 +3,9 @@
  * to disable, edit config/environment/index.js, and set `seedDB: false`
  */
 
+var Week = require('../api/week/week.model');
+var Task = require('../api/task/task.model');
+
 Week.find({}).remove(function() {
   var week = new Week({name: 1, quota: 0});
   week.save();
@@ -113,17 +116,14 @@ Week.find({}).remove(function() {
   week.save();
   Task.find({}).remove(function() {
     week.tasks.create({
-      week_id: 5,
       point: 3,
       name: 'Resist going to places where you spent time together',
       description: ""
     },{
-      week_id: 5,
       point: 3,
       name: 'Get a Hobby',
       description: "Now is the perfect time to master a new skill (and that’s in addition to practicing positivity)! What have you always wanted to do, but could never find the time to take on because you were too busy hanging out with your ex? From trying a new yoga class to getting your pilot’s license, trying something new will not only take your mind off your broken heart, but it will open you up to all sorts of new opportunities as well!"
     },{
-      week_id: 5,
       point: 3,
       name: 'Resist thinking about the good times you had together. It will only make you feel worse.',
       description: "Resist thinking about the good times you had together. It will only make you feel worse."
@@ -136,27 +136,22 @@ Week.find({}).remove(function() {
   week.save();
   Task.find({}).remove(function() {
     week.tasks.create({
-      week_id: 6,
       point: 2,
       name: 'Avoid looking at his pictures, cards, love letters.',
       description: "Avoid looking at his pictures, cards, love letters."
     },{
-      week_id: 6,
       point: 2,
       name: 'Recognize he/she is not the one for you.',
       description: "A large portion why you can’t move on is probably because you keep seeing him/her as “the one” for you. You just can’t see yourself with anyone else but him/her. Such fixations are dangerous. This leads you to linger on and on, hoping for a “some day” which will never come."
     },{
-      week_id: 6,
       point: 2,
       name: 'Make that CONS list',
       description: "Make a cons list of all the things you hated about him. The things he did that annoyed you, disgusted you, things he said that hurt you. For example, my ex never supported my dreams, love for writing, or my opinions. I hate that he always made it a point to comment on how thin I am, never called me, or told me I was beautiful. I remember these things constantly and it helps me realize exactly what I don’t want in a forever man. Making a cons list alone helps you focus on all the things you don’t want in a man you intend to spend the rest of your life with and get over him."
     },{
-      week_id: 6,
       point: 2,
       name: 'Focus only on what can be changed.',
       description: "Realize that not everything in life is meant to be modified or perfectly understood.  Live, let go, learn what you can and don’t waste energy worrying about the things you can’t change.  Focus exclusively on what you can change, and if you can’t change something you don’t like, change the way you think about it.  Review your options and then re-frame what you don’t like into a starting point for achieving something better."
     },{
-      week_id: 6,
       point: 2,
       name: 'Keep positive attitude. Be grateful for the wonderful things in your life',
       description: "After you’ve given yourself sufficient time to mourn the relationship, make a conscious decision to stop feeling bad for yourself. Choose to think positive thoughts about yourself, about love and about your future romantic prospects."
@@ -170,27 +165,22 @@ Week.find({}).remove(function() {
   week.save();
   Task.find({}).remove(function() {
     week.tasks.create({
-      week_id: 7,
       point: 2,
       name: 'Do not try to investigate if he\'s dating a new one. Seeing him with someone new does not help at all.',
       description: ""
     },{
-      week_id: 7,
       point: 2,
       name: 'Stop wishing and hoping that he\'ll come back to you',
       description: ""
     },{
-      week_id: 7,
       point: 2,
       name: 'Keep off from trying to run into him in grocery store or in his current work place.',
       description: ""
     },{
-      week_id: 7,
       point: 2,
       name: 'Do things you love',
       description: "Get into some activities. What are the things that perk you up? Things that excite you, enthuse you, make you feel rejuvenated? Exercising? Jogging? Swimming? Cycling? Rollerblading? Traveling? Going out with friends? Movies? Watching a drama? Reading a book? Engage yourself in them."
     },{
-      week_id: 7,
       point: 2,
       name: 'Meet new people.',
       description: "It’s easy to get trapped in your head thinking about the thing for too long. Meeting new people, friends or romantic potentials alike, reminds how there is a whole world out there. There are many great people to know out there. Don’t get cooped up with your life. I always find it an amazing adventure to know someone new and be exposed to a whole different life. It helps me understand life from a whole different angle."
