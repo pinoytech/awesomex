@@ -18,7 +18,7 @@ var config = require('../../config/environment');
  * Get a single user
  */
 exports.show = function (req, res, next) {
-  User.findOne({token: req.query.token}, function (err, user) {
+  User.findOne({token: req.headers.token}, function (err, user) {
     if (err) return next(err);
     if (!user) return res.send(404, "No user found");
     res.json(user);
@@ -29,7 +29,7 @@ exports.show = function (req, res, next) {
  * Update start_date
  */
 exports.update = function (req, res, next) {
-  User.findOne({token: req.query.token}, function (err, user) {
+  User.findOne({token: req.headers.token}, function (err, user) {
     if (err) return next(err);
     if (!user) return res.send(404, "No user found");
     user.start_date = req.body.start_date;

@@ -7,12 +7,16 @@ var moment = require('moment');
 
 exports.update = function (req, res, next) {
   User
-    .findOne({token: req.query.token}, function (err, user) {
+    .findOne({token: req.headers.token}, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
       TaskUser
-        .findOneOrCreate({_user: user.id, _task: req.params.task_id}, function(err, taskuser) {
+        .findOneOrCreate({_user: user.id, _task: req.body.task_id}, function(err, taskuser) {
           if (err) return next(err);
+          taskuser.checked = Boolean(req.body.checked);
+          taskuser.save(function(err, taskuser) {
+            res.json(taskuser);
+          });
         });
   });
 };

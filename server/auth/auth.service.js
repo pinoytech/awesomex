@@ -13,15 +13,13 @@ var User = require('../api/user/user.model');
 function isAuthenticated() {
   return compose()
     .use(function(req, res, next) {
-      // allow access_token to be passed through query parameter as well
       if(req.headers.authorization && req.headers.authorization != config.secrets.session) {
         res.send(401, "Invalid api token");
       }
       next();
     })
-    // Attach user to request
     .use(function(req, res, next) {
-      User.findOne({token: req.query.token}, function (err, user) {
+      User.findOne({token: req.headers.token}, function (err, user) {
         if (err) return next(err);
         if (!user) return res.send(401, "Invalid user token");
         next();

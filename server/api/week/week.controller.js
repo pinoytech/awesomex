@@ -10,6 +10,7 @@ var getWeekNumber = function(user, target_date) {
     var endOfWeek = moment(user.start_date).endOf('week').add(i, 'weeks').format("YYYY-MM-DD");
     var target = moment(endOfWeek).startOf('week').format("YYYY-MM-DD");
     for(var j = 0; j < 7; j++) {
+      console.log(moment(target_date).format("YYYY-MM-DD"));
       if(target == moment(target_date).format("YYYY-MM-DD")) {
         return i+1;
       }
@@ -22,7 +23,7 @@ var getWeekNumber = function(user, target_date) {
  * Get a week based on week number
  */
 exports.index = function (req, res, next) {
-  Week.findOne({token: req.query.token}, function (err, weeks) {
+  Week.findOne({token: req.headers.token}, function (err, weeks) {
     if (err) return next(err);
     res.json(weeks);
   });
@@ -30,7 +31,7 @@ exports.index = function (req, res, next) {
 
 exports.current_week = function (req, res, next) {
   User
-    .findOne({token: req.query.token}, function (err, user) {
+    .findOne({token: req.headers.token}, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
       if (!req.query.date) return res.send(422, "Please provide the current date");
