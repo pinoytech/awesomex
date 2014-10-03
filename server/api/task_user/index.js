@@ -7,6 +7,6 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.put('/task_response', auth.isHeaderAuth(), controller.update);
+router.post('/task_response', auth.isHeaderAuth(), controller.update);
 
 module.exports = router;
