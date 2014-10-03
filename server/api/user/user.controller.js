@@ -32,6 +32,7 @@ exports.update = function (req, res, next) {
   User.findOne({token: req.headers.token}, function (err, user) {
     if (err) return next(err);
     if (!user) return res.send(404, "No user found");
+    if (!req.body.start_date) return res.send(422, "Please provide a start date");
     user.start_date = req.body.start_date;
     user.save(function(err, user) {
       res.json(user);
