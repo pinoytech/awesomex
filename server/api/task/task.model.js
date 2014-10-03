@@ -1,13 +1,14 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+require('mongo-relation');
 
 var TaskSchema = new Schema({
-  name: String,
-  point: String,
-  week_id: Number,
-  description: String
+  title: String,
+  description: String,
+  points: Number
 });
 
+TaskSchema.belongsTo('Week');
 module.exports = mongoose.model('Task', TaskSchema);

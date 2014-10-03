@@ -22,10 +22,9 @@ var validationError = function(res, err) {
  * Get a single user
  */
 exports.show = function (req, res, next) {
-  console.log(req.params.id)
-  User.find({ token: req.params.id }, function (err, user) {
+  User.findById(req.params.id, function (err, user) {
     if (err) return next(err);
-    if (user.length == 0) return res.send(404, "No user found");
+    if (!user) return res.send(404, "No user found");
     res.json(user);
   });
 };

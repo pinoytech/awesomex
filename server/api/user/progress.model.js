@@ -1,11 +1,12 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 require('mongo-relation');
 
-var WeekSchema = new Schema({
-  name: String,
-  quota: Number
+
+var ProgressSchema = new Schema({
+  tasks: [{ type: Schema.ObjectId, ref: "Task"}]
 });
 
-WeekSchema.hasMany('Task', {dependent: 'delete'});
 module.exports = mongoose.model('Week', WeekSchema);
