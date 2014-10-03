@@ -7,7 +7,7 @@ var moment = require('moment');
 
 exports.update = function (req, res, next) {
   User
-    .findById(req.params.user_id, function (err, user) {
+    .findOne({token: req.query.token}, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
       TaskUser

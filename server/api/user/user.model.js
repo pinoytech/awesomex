@@ -46,7 +46,7 @@ UserSchema
     if (!this.isNew) return next();
 
     if (!validatePresenceOf(this.token))
-      next(new Error('Invalid password'));
+      next(new Error('Invalid token'));
     else
       next();
   });

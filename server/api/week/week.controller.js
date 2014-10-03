@@ -22,7 +22,7 @@ var getWeekNumber = function(user, target_date) {
  * Get a week based on week number
  */
 exports.index = function (req, res, next) {
-  Week.findById(req.params.user_id, function (err, weeks) {
+  Week.findOne({token: req.query.token}, function (err, weeks) {
     if (err) return next(err);
     res.json(weeks);
   });
@@ -30,10 +30,11 @@ exports.index = function (req, res, next) {
 
 exports.current_week = function (req, res, next) {
   User
-    .findById(req.params.user_id, function (err, user) {
+    .findOne({token: req.query.token}, function (err, user) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
-      var weekNumber = getWeekNumber(user, req.params.date);
+      if (!req.query.date) return res.send(422, "Please provide the current date");
+      var weekNumber = getWeekNumber(user, req.query.date);
       Week
         .findOne({name: weekNumber})
         .populate("tasks")

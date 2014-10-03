@@ -21,9 +21,9 @@ function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
-      User.find({token: req.query.token}, function (err, user) {
+      User.findOne({token: req.query.token}, function (err, user) {
         if (err) return next(err);
-        if (user.length == 0) return res.send(401, "Invalid user token");
+        if (!user) return res.send(401, "Invalid user token");
         next();
       });
     });

@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/awesomex-dev'
   },
 
-  seedDB: true
+  //seedDB: true
 };
