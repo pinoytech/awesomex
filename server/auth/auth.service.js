@@ -29,4 +29,16 @@ function isAuthenticated() {
     });
 }
 
+function isHeaderAuth() {
+  return compose()
+    .use(function(req, res, next) {
+      // allow access_token to be passed through query parameter as well
+      if(req.headers.authorization && req.headers.authorization != config.secrets.session) {
+        res.send(401, "Invalid api token");
+      }
+      next();
+    })
+}
+
+exports.isHeaderAuth = isHeaderAuth;
 exports.isAuthenticated = isAuthenticated;
