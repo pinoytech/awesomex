@@ -50,4 +50,15 @@ UserSchema
       next();
   });
 
+UserSchema
+  .post('save', function(next) {
+
+  });
+
+/**
+ * Methods
+ */
+UserSchema.methods = {
+};
+
 module.exports = mongoose.model('User', UserSchema);
