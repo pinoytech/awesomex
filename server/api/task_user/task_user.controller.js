@@ -11,8 +11,11 @@ exports.update = function (req, res, next) {
       if (err) return next(err);
       if (!user) return res.send(404, "No user found");
       TaskUser
-        .findOneOrCreate({_user: user.id, _task: req.body.task_id}, function(err, taskuser) {
+        .findOne({_user: user.id, _task: req.body.task_id}, function(err, taskuser) {
           if (err) return next(err);
+          if(!taskuser) {
+            taskuser = new TaskUser({_user: user.id, _task: req.body.task_id});
+          }
           taskuser.checked = Boolean(req.body.checked);
           taskuser.save(function(err, taskuser) {
             res.json(taskuser);
