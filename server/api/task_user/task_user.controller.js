@@ -10,6 +10,7 @@ var recomputeScore = function(user) {
     var totalScore = 0;
     var myScore = 0;
     for(var i=0; i< tasks.length; i++) {
+      console.log(tasks[i].point)
       totalScore+=parseFloat(tasks[i].point);
     }
     TaskUser.find({_user: user._id, checked: true}).populate("_task").exec(function(err, data) {
@@ -17,6 +18,8 @@ var recomputeScore = function(user) {
         if(data[i]._task)
           myScore+=parseFloat(data[i]._task.point);
       }
+      console.log(myScore)
+      console.log(totalScore);
       user.total_score = myScore / totalScore;
       user.save();
     });
