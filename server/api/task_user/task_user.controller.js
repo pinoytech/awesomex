@@ -17,7 +17,7 @@ var recomputeScore = function(user) {
         if(data[i]._task)
           myScore+=parseFloat(data[i]._task.point);
       }
-      user.total_score = myScore;
+      user.total_score = myScore / totalScore;
       user.save();
     });
   });
