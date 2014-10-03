@@ -8,7 +8,8 @@ var UserSchema = new Schema({
   start_date: Date,
   total_score: { type: Number, default: 0 },
   total_min_quota: { type: Number, default: 0 },
-  total_quota: { type: Number, default: 0 }
+  total_quota: { type: Number, default: 0 },
+  task_users: [{ type: Schema.Types.ObjectId, ref: "TaskUser"}]
 });
 
 // Validate empty token
@@ -49,5 +50,16 @@ UserSchema
     else
       next();
   });
+
+UserSchema
+  .post('save', function(next) {
+
+  });
+
+/**
+ * Methods
+ */
+UserSchema.methods = {
+};
 
 module.exports = mongoose.model('User', UserSchema);

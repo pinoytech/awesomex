@@ -2,13 +2,13 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-require('mongo-relation');
 
 var TaskSchema = new Schema({
   title: String,
   description: String,
-  points: Number
+  points: Number,
+  task_users: [{ type: Schema.Types.ObjectId, ref: "TaskUser"}],
+  _week: { type: Schema.Types.ObjectId, ref: "Week"}
 });
 
-TaskSchema.belongsTo('Week');
 module.exports = mongoose.model('Task', TaskSchema);
