@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
-  title: String,
+  name: String,
   description: String,
   point: Number,
   task_users: [{ type: Schema.Types.ObjectId, ref: "TaskUser"}],
