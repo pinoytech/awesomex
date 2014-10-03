@@ -5,8 +5,9 @@ var mongoose = require('mongoose'),
 
 var TaskSchema = new Schema({
   name: String,
-  info: String,
-  active: Boolean
+  point: String,
+  week_id: Number,
+  description: String
 });
 
 module.exports = mongoose.model('Task', TaskSchema);
